@@ -7,7 +7,7 @@ Tools for processing and analysing PPI datasets
 
 ## Documentation
 
-Information for usage and installation is available in the `docs` folder.
+Information for usage and installation is available from the documentation site https://emad-combine-lab.github.io/ppi_origami/
 
 
 ## License
