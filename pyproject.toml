@@ -1,11 +1,12 @@
 [tool.poetry]
 name = "ppi-origami"
-version = "0.1.0"
+version = "0.1.2"
 description = "Tools for protein-protein interaction datasets."
 authors = ["Joseph Szymborski <joseph.szymborski@mail.mcgill.ca>"]
-license = "Apache License 2.0"
+license = "GPL-3.0-or-later"
 readme = "README.md"
 packages = [{ include = "ppi_origami" }]
+repository = "https://github.com/Emad-COMBINE-lab/ppi_origami"
 
 [tool.poetry.dependencies]
 python = ">=3.9,<3.13"
