@@ -36,3 +36,6 @@ furo = "^2024.1.29"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+ppi_origami = 'ppi_origami.__main__:main'

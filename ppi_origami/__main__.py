@@ -1130,5 +1130,8 @@ class Pipeline(object):
         self.analysis = Analysis()
         self.wizard = Wizard()
 
+def main():
+    fire.Fire(Pipeline, name="ppi_origami")
+
 if __name__ == "__main__":
-    fire.Fire(Pipeline, name='ppi_origami')
+    main()
