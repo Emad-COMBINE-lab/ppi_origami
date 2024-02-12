@@ -47,7 +47,7 @@ def to_common(processed_folder: Path, source: str, taxon: Optional[int], identif
             )
 
         if not isfile(source_path):
-            raise IOError(f"Couldn't find a file for STRING v{version} dataset.")
+            raise IOError(f"Couldn't find a file for STRING v{version} dataset at {source_path}")
 
         parser = parse_string(source_path, identifier)
 
