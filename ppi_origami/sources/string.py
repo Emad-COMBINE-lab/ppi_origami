@@ -39,12 +39,13 @@ def update_secondaries(
 ) -> dict:
     if not os.path.isfile(raw_folder / "sec_ac.txt"):
         console.log(
-            "WARNING: Did not find a secondary ac index, UPKB ACs will not be verified.",
+            "WARNING: Did not find a secondary ac index",
             style="red",
         )
         console.log(
-            'run "ppi_orgiami download uniprot_sec_ac ./raw" to download the secondary ac index.'
+            'run "ppi_origami download uniprot_sec_ac ./raw" to download the secondary ac index.'
         )
+        raise Exception("Did not find a secondary ac index. run \"ppi_orgiami download uniprot_sec_ac RAW_FOLDER\" to download the secondary ac index.")
     else:
         if os.path.isfile(processed_folder / "sec_ac.json"):
             console.log("Using cached sec_ac.json file")
@@ -292,7 +293,7 @@ def download(dataset_type: str, taxon: Optional[int], path: Path, version: str):
     root_link = "https://stringdb-downloads.org/download/"
 
     if dataset_type == "links" and taxon is None:
-        url = f"{root_link}/protein.links.v{version}.txt.gz"
+        url = f"{root_link}protein.links.v{version}/protein.links.v{version}.txt.gz"
         utils.download_file(
             url,
             path / f"string_protein.links.v{version}.txt.gz",
@@ -303,10 +304,10 @@ def download(dataset_type: str, taxon: Optional[int], path: Path, version: str):
         if taxon is None:
             raise ValueError("Taxon must not be None.")
 
-        url = f"{root_link}/{taxon}.protein.links.v{version}.txt.gz"
+        url = f"{root_link}/protein.links.v{version}/{taxon}.protein.links.v{version}.txt.gz"
         utils.download_file(
             url,
-            path / f"{taxon}.string_protein.links.v{version}.txt.gz",
+            path / f"string_{taxon}.string_protein.links.v{version}.txt.gz",
             f"STRING Protein Links (Taxon: {taxon})",
         )
     elif dataset_type == "links_detailed" and taxon is None:
@@ -321,10 +322,10 @@ def download(dataset_type: str, taxon: Optional[int], path: Path, version: str):
         if taxon is None:
             raise ValueError("Taxon must not be None.")
 
-        url = f"{root_link}/{taxon}.protein.detailed.links.v{version}.txt.gz"
+        url = f"{root_link}protein.links.detailed.v{version}/{taxon}.protein.links.detailed.v{version}.txt.gz"
         utils.download_file(
             url,
-            path / f"{taxon}.string_protein.detailed.links.v{version}.txt.gz",
+            path / f"string_{taxon}.protein.links.detailed.v{version}.txt.gz",
             f"STRING Protein Links Detailed (Taxon: {taxon})",
         )
     elif dataset_type == "physical_links" and taxon is None:
@@ -332,7 +333,7 @@ def download(dataset_type: str, taxon: Optional[int], path: Path, version: str):
         if taxon is None:
             raise ValueError("Taxon must not be None.")
 
-        url = f"{root_link}/protein.physical.links.v{version}/protein.physical.links.v{version}.txt.gz"
+        url = f"{root_link}protein.physical.links.v{version}/protein.physical.links.v{version}.txt.gz"
         utils.download_file(
             url,
             path / f"string_protein.links.v{version}.txt.gz",
@@ -343,7 +344,7 @@ def download(dataset_type: str, taxon: Optional[int], path: Path, version: str):
         if taxon is None:
             raise ValueError("Taxon must not be None.")
 
-        url = f"{root_link}/protein.physical.links.v{version}/{taxon}.protein.physical.links.v{version}.txt.gz"
+        url = f"{root_link}protein.physical.links.v{version}/{taxon}.protein.physical.links.v{version}.txt.gz"
         utils.download_file(
             url,
             path / f"string_{taxon}.protein.links.v{version}.txt.gz",
@@ -354,7 +355,7 @@ def download(dataset_type: str, taxon: Optional[int], path: Path, version: str):
         if taxon is None:
             raise ValueError("Taxon must not be None.")
 
-        url = f"{root_link}/protein.physical.links.detailed.v{version}.txt.gz"
+        url = f"{root_link}protein.physical.links.detailed.v{version}/protein.physical.links.detailed.v{version}.txt.gz"
         utils.download_file(
             url,
             path / f"string_protein.links.detailed.v{version}.txt.gz",
@@ -365,7 +366,7 @@ def download(dataset_type: str, taxon: Optional[int], path: Path, version: str):
         if taxon is None:
             raise ValueError("Taxon must not be None.")
 
-        url = f"{root_link}/protein.physical.links.detailed.v{version}/{taxon}.protein.physical.links.detailed.v{version}.txt.gz"
+        url = f"{root_link}protein.physical.links.detailed.v{version}/{taxon}.protein.physical.links.detailed.v{version}.txt.gz"
         utils.download_file(
             url,
             path / f"string_{taxon}.protein.links.detailed.v{version}.txt.gz",
