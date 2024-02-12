@@ -517,7 +517,7 @@ def common_to_rapppid(
     metadata["preloaded_protein_splits_path"] = preloaded_protein_splits_path
     metadata["trim_unseen_proteins"] = trim_unseen_proteins
     metadata["negatives_path"] = negatives_path if negatives_path is not None else ""
-    metadata["taxon"] = taxon
+    metadata["taxon"] = taxon if taxon is not None else -1
     metadata["weighted_random"] = weighted_random
     metadata["scramble"] = scramble_proteins
     metadata["exclude_preloaded_from_neg"] = exclude_preloaded_from_neg
