@@ -117,7 +117,7 @@ def upkb_groups(raw_path, processed_path, limit_taxon):
         omaid_to_species[int(oma_id)] = int(gene_species)
 
     print("Saving OrthologGroups")
-    path = processed_path / "oma"
+    path = processed_path
 
     os.makedirs(path, exist_ok=True)
 
@@ -138,7 +138,12 @@ def upkb_groups(raw_path, processed_path, limit_taxon):
             members_species = list()
 
             for oid in handler.ortholog_groups[og_id]:
-                uid = omaid_to_upkb[int(oid)]
+
+                try:
+                    uid = omaid_to_upkb[int(oid)]
+                except KeyError:
+                    print(f"Can't find UniprotKB accessions for the OMA id {oid}. Might be out-of-species. Skipping...")
+                    continue
 
                 if (
                     uid is not None
@@ -149,13 +154,14 @@ def upkb_groups(raw_path, processed_path, limit_taxon):
                     members_species.append(str(omaid_to_species[int(oid)]))
                     uids.add((uid, str(omaid_to_species[int(oid)])))
 
-            writer.writerow(
-                {
-                    "orthologGroup_id": og_id,
-                    "members": "|".join(new_og),
-                    "members_species": "|".join(members_species),
-                }
-            )
+            if len(new_og) > 1 and len(members_species) > 0:
+                writer.writerow(
+                    {
+                        "orthologGroup_id": og_id,
+                        "members": "|".join(new_og),
+                        "members_species": "|".join(members_species),
+                    }
+                )
 
     print("Saving UPKB IDs and sequences")
 
@@ -230,7 +236,7 @@ def build_triplet_dataset(
         else:
             return True
 
-    path = processed_path / "oma"
+    path = processed_path
     df = pd.read_csv(path / "ortholog_group.csv.gz").sample(frac=1.0)
 
     db = plyvel.DB(
