@@ -350,7 +350,7 @@ def rapppid_to_intrepppid(
         all_oma_ids = set()
 
         with gzip.open(
-                processed_path / "oma" / "ortholog_group.csv.gz", "rt", newline=""
+                processed_path / "ortholog_group.csv.gz", "rt", newline=""
         ) as f:
             oma_reader = DictReader(f)
 
@@ -362,7 +362,7 @@ def rapppid_to_intrepppid(
         all_oma_members = set()
 
     with gzip.open(
-        processed_path / "oma" / "ortholog_group.csv.gz", "rt", newline=""
+        processed_path / "ortholog_group.csv.gz", "rt", newline=""
     ) as f:
         oma_reader = DictReader(f)
 
