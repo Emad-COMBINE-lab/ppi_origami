@@ -4,6 +4,13 @@
 
 Tools for processing and analysing PPI datasets
 
+## Installing
+
+You can install PPI origami using pip
+
+```bash
+pip install -U ppi-origami
+```
 
 ## Documentation
 

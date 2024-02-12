@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ppi-origami"
-version = "0.1.3"
+version = "0.1.4"
 description = "Tools for protein-protein interaction datasets."
 authors = ["Joseph Szymborski <joseph.szymborski@mail.mcgill.ca>"]
 license = "GPL-3.0-or-later"

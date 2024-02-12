@@ -10,9 +10,11 @@ This is the documentation for PPI Origami, a programme that helps users create a
 protein-protein interactions (PPIs) with cross-validation splits suitable for training and testing PPI inference models.
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 2
    :caption: Contents:
 
+   install
+   usage
    theory
    commands/download
    commands/process
