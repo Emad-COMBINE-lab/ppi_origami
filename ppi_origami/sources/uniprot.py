@@ -59,8 +59,8 @@ def make_seq_db(processed_folder, taxon: Optional[int] = None):
             if taxon is not None:
                 db_taxon.put(entry.encode("utf8"), sequence.encode("utf8"))
 
-            num_rows += 500
-            progress.update(task, advance=500)
+            num_rows += 1
+            progress.update(task, advance=1)
 
 
 def download(dataset_type: str, taxon: Optional[int], path: Path):
