@@ -75,7 +75,12 @@ class Process(object):
             raw_folder: Path, processed_folder: Path, version: str = "12.0", taxon: Optional[int] = None
     ) -> None:
         """
-        Add a UPKB acession column to STRING rows.
+        Add a UniprotKB accession column to STRING rows.
+
+        This can be a long process, as a STRING ID to UniprotKB accession map must be built.
+
+        Any protein pair with a STRING ID for which PPI Origami can't find the corresponding UniprotKB accession is
+        omitted from the dataset.
 
         You can call this function from the CLI using::
         
@@ -237,8 +242,6 @@ class Process(object):
         weighted_random = bool(weighted_random)
         scramble_proteins = bool(scramble_proteins)
         exclude_preloaded_from_neg = bool(exclude_preloaded_from_neg)
-
-        console.log(exclude_preloaded_from_neg)
 
         rapppid.common_to_rapppid(
             console,
