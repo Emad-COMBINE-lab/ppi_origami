@@ -295,6 +295,8 @@ def get_random_negative(
 
     iters = 0
 
+    # print(len(proteins), len(train_interactions), len(val_interactions), len(test_interactions), len(train_neg_interactions), len(val_neg_interactions), len(test_neg_interactions))
+
     while True:
         if weighted_random:
             protein1, protein2 = sample(population=proteins, k=2, counts=counts)
@@ -741,7 +743,7 @@ def c_ify(
             f"{out_of_taxon} ({out_of_taxon * 100 / interaction_num_rows:.3})% edges are out-of-taxon. Skipping them."
         )
 
-    for c in [1, 2, 3]:
+    for c in c_types:
         console.log(f"+ C{c}")
         console.log(f"+--- # train pos interactions: {len(train_pos_interactions[c])}")
         console.log(f"+--- # val pos interactions: {len(val_pos_interactions[c])}")

@@ -466,7 +466,7 @@ def common_to_rapppid(
         exclude_preloaded_from_neg=exclude_preloaded_from_neg
     )
 
-    for c in [1, 2, 3]:
+    for c in c_types:
         for split in ['train', 'val', 'test']:
             console.log(f"C{c} {split} edges: {len(interactions['C'+str(c)][split])}")
 
