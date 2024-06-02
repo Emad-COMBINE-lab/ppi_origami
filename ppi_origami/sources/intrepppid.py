@@ -163,12 +163,14 @@ def write_intrepppid(
     print(f"{len(missing_proteins)} missing proteins")
     missing_proteins = [f"accession:{missing_protein.decode('utf8')}" for missing_protein in missing_proteins]
 
-    num_batches = len(missing_proteins) // 1000
+    batch_size = 200
+
+    num_batches = len(missing_proteins) // batch_size
     num_batches = max(num_batches, 1)
 
     for batch_num in track(range(num_batches), description="Finding Missing Sequences"):
-        min_index = batch_num * 1000
-        max_index = min_index + 1000
+        min_index = batch_num * batch_size
+        max_index = min_index + batch_size
         batch = missing_proteins[min_index:max_index]
         query = "+OR+".join(batch)
         query_url = f"https://rest.uniprot.org/uniprotkb/search?query={query}&format=tsv&fields=accession,sequence"

@@ -939,6 +939,7 @@ def upkb_query(query_url: str) -> Generator[List[str], None, None]:
 
     def get_batch(batch_url):
         while batch_url:
+            time.sleep(1)
             response = session.get(batch_url)
             response.raise_for_status()
             total = response.headers["x-total-results"]
