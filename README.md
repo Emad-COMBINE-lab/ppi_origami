@@ -2,6 +2,9 @@
 
 # PPI Origami
 
+[![DOI](https://zenodo.org/badge/673402925.svg)](https://zenodo.org/doi/10.5281/zenodo.10652233)
+
+
 Tools for processing and analysing PPI datasets
 
 ## Installing
